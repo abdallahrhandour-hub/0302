@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13 Ans d'Amour ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated background gradient */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 193, 7, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255, 214, 0, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 20%, rgba(255, 235, 59, 0.08) 0%, transparent 50%);
+            animation: gradientShift 15s ease infinite;
+            pointer-events: none;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Floating hearts and particles animation */
+        .heart {
+            position: fixed;
+            color: rgba(255, 215, 0, 0.4);
+            font-size: 20px;
+            animation: float 8s infinite;
+            pointer-events: none;
+            filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.5));
+        }
+
+        .particle {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, #ffd700 0%, transparent 70%);
+            border-radius: 50%;
+            animation: particleFloat 10s infinite;
+            pointer-events: none;
+            box-shadow: 0 0 10px #ffd700;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: translateY(90vh) rotate(45deg) scale(1);
+            }
+            50% {
+                transform: translateY(50vh) rotate(180deg) scale(1.2);
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) rotate(360deg) scale(0);
+                opacity: 0;
+            }
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translate(0, 100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: translate(20px, 90vh) scale(1);
+            }
+            50% {
+                transform: translate(-30px, 50vh) scale(1.5);
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(40px, -10vh) scale(0);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 1.5s ease-out;
+        }
+
+        .header h1 {
+            color: #ffd700;
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5),
+                         0 0 40px rgba(255, 215, 0, 0.3),
+                         2px 2px 4px rgba(0,0,0,0.5);
+            background: linear-gradient(45deg, #ffd700, #ffed4e, #ffd700);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientText 3s ease infinite;
+        }
+
+        @keyframes gradientText {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .date {
+            color: #ffc107;
+            font-size: 1.5em;
+            font-style: italic;
+            text-shadow: 0 2px 10px rgba(255, 193, 7, 0.3);
+        }
+
+        .years-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 193, 7, 0.15) 100%);
+            padding: 20px 40px;
+            border-radius: 50px;
+            margin: 20px 0;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 215, 0, 0.4);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.2),
+                        inset 0 0 20px rgba(255, 215, 0, 0.1);
+            animation: pulse 2s ease infinite;
+        }
+
+        .years-badge h2 {
+            color: #ffd700;
+            font-size: 2em;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .message-card {
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(22, 33, 62, 0.95) 100%);
+            border-radius: 30px;
+            padding: 50px;
+            margin: 30px 0;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+                        0 0 30px rgba(255, 215, 0, 0.1),
+                        inset 0 0 50px rgba(255, 215, 0, 0.03);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            animation: fadeInUp 1s ease-out 0.3s both;
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .message-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .message-card h2 {
+            color: #ffd700;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            text-align: center;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+            position: relative;
+            z-index: 1;
+        }
+
+        .message-card p {
+            color: #e0e0e0;
+            font-size: 1.2em;
+            line-height: 2;
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .love-quotes {
+            margin: 40px 0;
+        }
+
+        .quote-card {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.08) 0%, rgba(255, 193, 7, 0.05) 100%);
+            border-left: 5px solid #ffd700;
+            padding: 30px;
+            margin: 25px 0;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4),
+                        inset 0 0 20px rgba(255, 215, 0, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            backdrop-filter: blur(10px);
+            animation: slideIn 0.6s ease-out both;
+            opacity: 0;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .quote-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5),
+                        0 0 30px rgba(255, 215, 0, 0.2);
+            border-left-width: 8px;
+        }
+
+        .quote-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 80px;
+            color: rgba(255, 215, 0, 0.1);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .quote-card.visible {
+            animation: slideIn 0.6s ease-out both;
+        }
+
+        .quote-card p {
+            color: #f0f0f0;
+            font-size: 1.15em;
+            font-style: italic;
+            text-align: left;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .quote-card .author {
+            color: #ffd700;
+            font-size: 0.95em;
+            text-align: right;
+            margin-top: 15px;
+            font-style: normal;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .photo-frame {
+            width: 350px;
+            height: 350px;
+            margin: 40px auto;
+            border: 3px solid rgba(255, 215, 0, 0.3);
+            border-radius: 50%;
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.3),
+                        0 20px 60px rgba(0, 0, 0, 0.5),
+                        inset 0 0 30px rgba(255, 215, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, rgba(26, 26, 46, 0.8) 70%);
+            animation: pulseGlow 3s ease-in-out infinite;
+            position: relative;
+        }
+
+        .photo-frame::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg,
+                transparent 0deg,
+                rgba(255, 215, 0, 0.2) 90deg,
+                transparent 180deg,
+                rgba(255, 215, 0, 0.2) 270deg,
+                transparent 360deg
+            );
+            animation: rotate 6s linear infinite;
+        }
+
+        .photo-frame svg {
+            width: 80%;
+            height: 80%;
+            z-index: 1;
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5));
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% {
+                box-shadow: 0 0 40px rgba(255, 215, 0, 0.3),
+                            0 20px 60px rgba(0, 0, 0, 0.5),
+                            inset 0 0 30px rgba(255, 215, 0, 0.1);
+            }
+            50% {
+                box-shadow: 0 0 60px rgba(255, 215, 0, 0.5),
+                            0 20px 60px rgba(0, 0, 0, 0.5),
+                            inset 0 0 50px rgba(255, 215, 0, 0.2);
+            }
+        }
+
+        .btn-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .love-button {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffc107 100%);
+            color: #1a1a2e;
+            border: none;
+            padding: 18px 50px;
+            font-size: 1.3em;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4),
+                        0 0 20px rgba(255, 215, 0, 0.3);
+            transition: all 0.4s ease;
+            font-family: 'Georgia', serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .love-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .love-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .love-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.6),
+                        0 0 40px rgba(255, 215, 0, 0.5);
+        }
+
+        .love-button:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        .hidden-message {
+            display: none;
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.98) 0%, rgba(22, 33, 62, 0.98) 100%);
+            border-radius: 30px;
+            padding: 50px;
+            margin: 30px 0;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6),
+                        0 0 50px rgba(255, 215, 0, 0.2),
+                        inset 0 0 50px rgba(255, 215, 0, 0.05);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            animation: fadeInUp 0.8s ease-out;
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hidden-message::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            animation: shimmer 8s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translate(-50%, -50%); }
+            100% { transform: translate(50%, 50%); }
+        }
+
+        .hidden-message.show {
+            display: block;
+        }
+
+        .hidden-message h2 {
+            color: #ffd700;
+            font-size: 2.8em;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hidden-message p {
+            color: #f0f0f0;
+            font-size: 1.3em;
+            line-height: 2;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-80px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(80px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(26, 26, 46, 0.5);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #ffd700 0%, #ffc107 100%);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #ffed4e 0%, #ffd700 100%);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2em;
+            }
+            
+            .years-badge h2 {
+                font-size: 1.5em;
+            }
+            
+            .message-card, .hidden-message {
+                padding: 30px 20px;
+            }
+            
+            .photo-frame {
+                width: 250px;
+                height: 250px;
+            }
+
+            .love-button {
+                padding: 15px 35px;
+                font-size: 1.1em;
+            }
+
+            .quote-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Notre Histoire d'Amour</h1>
+            <div class="date">3 Février 2012</div>
+            <div class="years-badge">
+                <h2>13 Belles Années Ensemble</h2>
+            </div>
+        </div>
+
+        <div class="message-card">
+            <div class="photo-frame">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Couple silhouette illustration -->
+                    <defs>
+                        <linearGradient id="heartGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ffd700;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#ffed4e;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#ffc107;stop-opacity:1" />
+                        </linearGradient>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    
+                    <!-- Background circle -->
+                    <circle cx="100" cy="100" r="90" fill="rgba(255, 215, 0, 0.1)" opacity="0.3"/>
+                    
+                    <!-- Big heart -->
+                    <path d="M100,170 C100,170 40,120 40,85 C40,65 55,50 75,50 C85,50 95,55 100,65 C105,55 115,50 125,50 C145,50 160,65 160,85 C160,120 100,170 100,170 Z" 
+                          fill="url(#heartGradient)" filter="url(#glow)"/>
+                    
+                    <!-- Male figure (left) -->
+                    <circle cx="80" cy="90" r="12" fill="#ffd700" opacity="0.9"/>
+                    <ellipse cx="80" cy="110" rx="15" ry="25" fill="#ffd700" opacity="0.9"/>
+                    
+                    <!-- Female figure (right) -->
+                    <circle cx="120" cy="88" r="12" fill="#ffd700" opacity="0.9"/>
+                    <ellipse cx="120" cy="108" rx="15" ry="25" fill="#ffd700" opacity="0.9"/>
+                    
+                    <!-- Holding hands -->
+                    <line x1="90" y1="105" x2="110" y2="105" stroke="#ffd700" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+                    
+                    <!-- Small hearts floating -->
+                    <path d="M50,40 C50,40 45,35 45,32 C45,29 47,27 49,27 C50,27 51,28 52,29 C53,28 54,27 55,27 C57,27 59,29 59,32 C59,35 54,40 50,40 Z" 
+                          fill="#ffed4e" opacity="0.6">
+                        <animateTransform attributeName="transform" type="translate" values="0,0; 2,-5; 0,0" dur="3s" repeatCount="indefinite"/>
+                    </path>
+                    <path d="M150,50 C150,50 145,45 145,42 C145,39 147,37 149,37 C150,37 151,38 152,39 C153,38 154,37 155,37 C157,37 159,39 159,42 C159,45 154,50 150,50 Z" 
+                          fill="#ffed4e" opacity="0.6">
+                        <animateTransform attributeName="transform" type="translate" values="0,0; -2,-5; 0,0" dur="4s" repeatCount="indefinite"/>
+                    </path>
+                    
+                    <!-- Stars -->
+                    <polygon points="30,60 32,66 38,66 33,70 35,76 30,72 25,76 27,70 22,66 28,66" fill="#ffd700" opacity="0.5">
+                        <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+                    </polygon>
+                    <polygon points="170,70 172,76 178,76 173,80 175,86 170,82 165,86 167,80 162,76 168,76" fill="#ffd700" opacity="0.5">
+                        <animate attributeName="opacity" values="0.5;1;0.5" dur="2.5s" repeatCount="indefinite"/>
+                    </polygon>
+                </svg>
+            </div>
+            <h2>À Mon Amour</h2>
+            <p>Il y a treize ans, ce jour précis, nos chemins se sont croisés et ma vie a changé pour toujours.</p>
+            <p>Merci pour chaque lever de soleil que nous avons partagé, chaque rire qui a résonné dans nos journées, et chaque larme que tu m'as aidé à sécher.</p>
+            <p>Merci pour ta patience, ta gentillesse, et l'amour inébranlable que tu m'as offert pendant toutes ces années.</p>
+            <p>Tu es mon meilleur ami, mon partenaire, mon tout.</p>
+        </div>
+
+        <div class="message-card love-quotes">
+            <h2>Mots d'Amour</h2>
+            <div class="quote-card">
+                <p>Dans le monde entier, il n'y a pas de cœur pour moi comme le tien. Dans le monde entier, il n'y a pas d'amour pour toi comme le mien.</p>
+                <div class="author">— Maya Angelou</div>
+            </div>
+            <div class="quote-card">
+                <p>Je t'aime non seulement pour ce que tu es, mais pour ce que je suis quand je suis avec toi.</p>
+                <div class="author">— Roy Croft</div>
+            </div>
+            <div class="quote-card">
+                <p>La meilleure chose à laquelle s'accrocher dans la vie, c'est l'un à l'autre.</p>
+                <div class="author">— Audrey Hepburn</div>
+            </div>
+            <div class="quote-card">
+                <p>J'ai trouvé celui que mon âme aime.</p>
+                <div class="author">— Cantique des Cantiques 3:4</div>
+            </div>
+            <div class="quote-card">
+                <p>L'amour se compose d'une seule âme habitant deux corps.</p>
+                <div class="author">— Aristote</div>
+            </div>
+            <div class="quote-card">
+                <p>Tu es mon aujourd'hui et tous mes lendemains.</p>
+                <div class="author">— Leo Christopher</div>
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <button class="love-button" onclick="revealMessage()">Clique pour un Message Spécial ❤️</button>
+        </div>
+
+        <div class="hidden-message" id="specialMessage">
+            <h2>My Hnikat of Love</h2>
+            <p>Chaque jour avec toi est une bénédiction que je ne tiens jamais pour acquise.</p>
+            <p>Voici les souvenirs que nous avons créés et toutes les aventures qui nous attendent encore.</p>
+            <p>Merci de m'avoir choisi, chaque jour, pendant ces 13 années incroyables.</p>
+            <p>Je t'aime plus que les mots ne peuvent l'exprimer, plus qu'hier, moins que demain.</p>
+            <p style="font-size: 1.5em; color: #ffd700; margin-top: 30px; text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);">
+                <strong>❤️ Joyeux Anniversaire, Mon Amour ❤️</strong>
+                <strong>❤️ Hnikati ❤️</strong>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Create floating hearts with golden color
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 6) + 's';
+            heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 10000);
+        }
+
+        // Create floating particles
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.animationDuration = (Math.random() * 5 + 8) + 's';
+            particle.style.animationDelay = Math.random() * 3 + 's';
+            document.body.appendChild(particle);
+
+            setTimeout(() => {
+                particle.remove();
+            }, 15000);
+        }
+
+        // Generate hearts and particles periodically
+        setInterval(createHeart, 800);
+        setInterval(createParticle, 400);
+
+        // Reveal special message
+        function revealMessage() {
+            const message = document.getElementById('specialMessage');
+            message.classList.add('show');
+            
+            // Scroll to message smoothly
+            setTimeout(() => {
+                message.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+            
+            // Create burst of hearts and particles
+            for (let i = 0; i < 30; i++) {
+                setTimeout(createHeart, i * 80);
+                setTimeout(createParticle, i * 60);
+            }
+        }
+
+        // Animate quotes on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.quote-card').forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.15}s`;
+            observer.observe(card);
+        });
+
+        // Initial hearts and particles
+        for (let i = 0; i < 15; i++) {
+            setTimeout(createHeart, i * 250);
+            setTimeout(createParticle, i * 200);
+        }
+    </script>
+</body>
+</html>
